@@ -5,23 +5,16 @@
 
 using namespace std;
 
-struct aresta
-{
-    int v1;
-    int v2;
-};
-
-typedef struct aresta Aresta;
-
 int lerDado(ifstream& arq){
 
     int dado;
     arq >> dado;
     return dado;
-
 }
 
-void lerArestas(ifstream& arq, vector <Aresta> arestas){
+Aresta lerArestas(ifstream& arq){
 
-    
+    Aresta dado; 
+    arq >> dado.v1 >> dado.v2;
+    return dado;
 }
