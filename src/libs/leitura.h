@@ -13,7 +13,7 @@ typedef struct aresta Aresta;
 
 
 int lerDado(ifstream& arq);
-Aresta lerArestas(ifstream& arq);
+void lerArestas(ifstream& arq, vector <Aresta> &arestas);
 
 
 #endif

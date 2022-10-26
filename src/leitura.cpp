@@ -12,9 +12,12 @@ int lerDado(ifstream& arq){
     return dado;
 }
 
-Aresta lerArestas(ifstream& arq){
+void lerArestas(ifstream& arq, vector <Aresta> &arestas){
 
     Aresta dado; 
-    arq >> dado.v1 >> dado.v2;
-    return dado;
+    while(!arq.eof()){
+        arq >> dado.v1 >> dado.v2;
+        arestas.push_back(dado);
+    }
+    
 }

@@ -13,7 +13,7 @@ void code_run(ifstream& arq){
     int n_vertices = lerDado(arq);
     
     while(!arq.eof()){
-        teste.push_back(lerArestas(arq));
+        lerArestas(arq, teste);
     }
 
     int n_arestas = teste.size();
@@ -22,5 +22,5 @@ void code_run(ifstream& arq){
 
 int count_graus(vector <Aresta> arestas, int vertice){
 
-
+    return 1;
 }

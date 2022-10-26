@@ -11,17 +11,17 @@ int main(){
 
     vector <Aresta> teste;
 
-    int valor = lerDado(arq); int x;
+    int valor = lerDado(arq); int x, i;
     Aresta dado;
 
-    while(!arq.eof()){
-        teste.push_back(lerArestas(arq));
-    }
     
+    lerArestas(arq, teste);
 
     cout << valor << endl;
-    cout << teste[23].v1 << ' ' << teste[23].v2  << ' ' << teste.size() << endl;
-
+    for(i=0; i<teste.size(); i++){
+        cout << teste[i].v1 << ' ' << teste[i].v2  << ' ' << teste.size() << endl;
+    }
+    
 
     return 0;
 }
