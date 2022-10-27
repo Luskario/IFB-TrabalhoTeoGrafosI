@@ -12,9 +12,7 @@ int main(){
     vector <Aresta> teste;
 
     int valor = lerDado(arq); int x, i;
-    Aresta dado;
-
-    
+        
     lerArestas(arq, teste);
 
     cout << valor << endl;
