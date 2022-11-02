@@ -1,20 +1,18 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "./libs/leitura.h"
+#include "./libs/grafos.h"
 
 using namespace std;
 
-bool lerGrafo(string nome_arq, Grafo &grafo){
-
+Grafo::Grafo(string nome_arq){
     ifstream arq("./input/" + nome_arq);
 
     if(!arq.is_open()){
         cout << "arquivo não encontrado";
-        return false;
     }
 
-    arq >> grafo.n_vertices;
+    arq >> n_vertices;
 
     Aresta dado; 
     while(!arq.eof()){
@@ -23,13 +21,21 @@ bool lerGrafo(string nome_arq, Grafo &grafo){
         arq >> dado.v1 >> dado.v2;
 
         if(dado.v1 && dado.v2){
-            grafo.arestas.push_back(dado);
+            arestas.push_back(dado);
         }
     }
 
-    grafo.n_arestas = grafo.arestas.size();
-    cout_graus(grafo);
+    n_arestas = arestas.size();
+    int i;
+
+    for(i=0; i<n_vertices; i++){
+        graus.push_back(0);
+    }
+
+    for(i=0; i<n_arestas; i++){
+        graus[arestas[i].v1-1]++;
+        graus[arestas[i].v2-1]++;
+    }
 
     arq.close();
-    return true;
 }

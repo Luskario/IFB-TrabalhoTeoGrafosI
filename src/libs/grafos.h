@@ -9,16 +9,30 @@ typedef struct aresta {
     
 } Aresta;
 
-typedef struct grafo {
-    int n_vertices;
-    int n_arestas;
-    vector <int> graus;
-    vector <Aresta> arestas;
-    vector<vector<int>> mat_adj;
+class Grafo {
+    private:
+        //atributos
+        int n_vertices;
+        int n_arestas;
+        vector <int> graus;
+        vector <Aresta> arestas;
+        vector<vector<int>> mat_adj;
+        vector<vector<int>> list_adj;
 
-} Grafo;
+    //
+    private:
+        //funções privadas
+        void matriz_adjacente();
+        void lista_adjacente();
+    //
+    public:
+        Grafo(string nome_arq);
+        bool imprimeGrafo();
+        bool imprimeMatriz();
+        bool imprimeLista();
 
-void cout_graus(Grafo &grafo);
-void matriz_adjacente(Grafo &grafo);
+        void getDados();
+    //
+};
 
 #endif
