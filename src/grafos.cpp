@@ -6,16 +6,30 @@
 
 using namespace std;
 
-int cout_graus(vector <Aresta> &arestas, int vertice){
-    int graus, i;
-
-    for(i=0; i<arestas.size(); i++){
-        if (arestas[i].v1 == vertice || arestas[i].v2 == vertice){
-            graus++;
-        }
+void cout_graus(Grafo &grafo){
+    int i;
+    
+    for(i=0; i<grafo.n_vertices; i++){
+        grafo.graus.push_back(0);
     }
 
-    return graus;
+    for(i=0; i<grafo.n_arestas; i++){
+        grafo.graus[grafo.arestas[i].v1-1]++;
+        grafo.graus[grafo.arestas[i].v2-1]++;
+    }
 }
 
-void matrix_adjacente(vector <Aresta> &arestas, int &matrix){}
+void matriz_adjacente(Grafo &grafo){
+
+    int i;
+    vector <int> line;
+
+    for (i=0; i<grafo.n_vertices; i++){
+        line.push_back(0);
+    }
+    
+    for (i=0; i<grafo.n_vertices; i++){
+        grafo.mat_adj.push_back(line);
+    }
+
+}

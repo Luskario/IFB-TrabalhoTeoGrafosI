@@ -5,19 +5,31 @@
 
 using namespace std;
 
-int lerDado(ifstream& arq){
+bool lerGrafo(string nome_arq, Grafo &grafo){
 
-    int dado;
-    arq >> dado;
-    return dado;
-}
+    ifstream arq("./input/" + nome_arq);
 
-void lerArestas(ifstream& arq, vector <Aresta> &arestas){
+    if(!arq.is_open()){
+        cout << "arquivo não encontrado";
+        return false;
+    }
+
+    arq >> grafo.n_vertices;
 
     Aresta dado; 
     while(!arq.eof()){
+
+        dado.v1 = 0; dado.v2 = 0;
         arq >> dado.v1 >> dado.v2;
-        arestas.push_back(dado);
+
+        if(dado.v1 && dado.v2){
+            grafo.arestas.push_back(dado);
+        }
     }
-    
+
+    grafo.n_arestas = grafo.arestas.size();
+    cout_graus(grafo);
+
+    arq.close();
+    return true;
 }
