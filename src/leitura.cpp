@@ -5,37 +5,39 @@
 
 using namespace std;
 
-Grafo::Grafo(string nome_arq){
+bool Grafo::carregarGrafo(string nome_arq){
     ifstream arq("./input/" + nome_arq);
 
     if(!arq.is_open()){
         cout << "arquivo não encontrado";
-    }
+        return false;
 
-    arq >> n_vertices;
+    } else {
+        arq >> n_vertices;
 
-    Aresta dado; 
-    while(!arq.eof()){
+        Aresta dado; 
+        while(!arq.eof()){
 
-        dado.v1 = 0; dado.v2 = 0;
-        arq >> dado.v1 >> dado.v2;
+            dado.v1 = 0; dado.v2 = 0;
+            arq >> dado.v1 >> dado.v2;
 
-        if(dado.v1 && dado.v2){
-            arestas.push_back(dado);
+            if(dado.v1 && dado.v2){
+                arestas.push_back(dado);
+            }
         }
-    }
 
-    n_arestas = arestas.size();
-    int i;
+        n_arestas = arestas.size();
 
-    for(i=0; i<n_vertices; i++){
-        graus.push_back(0);
-    }
+        bool v_graus = gerar_graus();
+        bool v_mat_adj = matriz_adjacente();
+        bool v_list_adj = lista_adjacente();
 
-    for(i=0; i<n_arestas; i++){
-        graus[arestas[i].v1-1]++;
-        graus[arestas[i].v2-1]++;
-    }
+        arq.close();
+        return true;
+    } 
 
-    arq.close();
+}
+
+Grafo::Grafo(string nome_arq){
+    bool verifica = carregarGrafo(nome_arq);
 }

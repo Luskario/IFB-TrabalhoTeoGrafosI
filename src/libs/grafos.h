@@ -22,11 +22,13 @@ class Grafo {
     //
     private:
         //funções privadas
-        void matriz_adjacente();
-        void lista_adjacente();
+        bool gerar_graus();
+        bool matriz_adjacente();
+        bool lista_adjacente();
     //
     public:
         Grafo(string nome_arq);
+        bool carregarGrafo(string nome_arq);
         bool imprimeGrafo();
         bool imprimeMatriz();
         bool imprimeLista();

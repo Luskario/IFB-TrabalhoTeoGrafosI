@@ -9,7 +9,7 @@ int main(){
     
     Grafo teste("as_graph.txt");
 
-   teste.getDados();
+    teste.getDados();
 
     return 0;
 }
