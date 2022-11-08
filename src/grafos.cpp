@@ -23,29 +23,31 @@ bool Grafo::gerar_graus(){
         graus[arestas[i].v1-1]++;
         graus[arestas[i].v2-1]++;
     }
+
     return true;
 }
 
 bool Grafo::matriz_adjacente(){
-    int i;
-    vector <int> line;
+    int i; vector <int> line;
 
     for(i=0; i<n_vertices; i++){
         line.push_back(0);
-    }
-    for(i=0; i<n_vertices; i++){
         mat_adj.push_back(line);
     }
-    for(aresta a: arestas){
-        mat_adj[a.v1-1][a.v2-1] = 1;
-        mat_adj[a.v2-1][a.v1-1] = 1;
+    
+    for(Aresta a: arestas){
+        if(a.v1 > a.v2){
+            mat_adj[a.v1-1][a.v2-1] = 1;
+        } else {
+            mat_adj[a.v2-1][a.v1-1] = 1;
+        }
     }
+
     return true;
 }
 
 bool Grafo::lista_adjacente(){
-    int i;
-    vector <int> line;
+    int i; vector <int> line;
 
     for(i=0; i<n_vertices; i++){
         list_adj.push_back(line);
@@ -56,4 +58,16 @@ bool Grafo::lista_adjacente(){
     }
     
     return true;
+}
+
+bool Grafo::busca_largura(){
+
+}
+
+bool Grafo::busca_profundidade(){
+
+}
+
+bool Grafo::comp_conexo(){
+    
 }

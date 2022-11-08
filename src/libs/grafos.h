@@ -29,10 +29,14 @@ class Grafo {
     public:
         Grafo(string nome_arq);
         bool carregarGrafo(string nome_arq);
+
         bool imprimeGrafo();
         bool imprimeMatriz();
         bool imprimeLista();
 
+        bool busca_largura();
+        bool busca_profundidade();
+        bool comp_conexo();
         void getDados();
     //
 };
