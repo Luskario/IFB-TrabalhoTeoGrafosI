@@ -63,3 +63,36 @@ bool Grafo::imprimeLista(){
         return true;
     }
 }
+
+bool Grafo::imprime_conexo(int numero, int *visitados){
+    ofstream arq("./output/comp_conexos.txt");
+    int i, x;
+    int tamanhos[numero];
+
+    for(x=0; x<numero; x++){ tamanhos[x] = 0; }
+
+    if(!arq.is_open()){
+        cout << "arquivo não pode ser aberto" << endl;
+        return false;
+
+    } else {
+
+        for(x=0; x<n_vertices; x++){
+            tamanhos[visitados[x]-1]++;
+        }
+        arq << "n_componentes = " << numero << endl;
+        
+        for(i=1; i<numero+1; i++){
+            arq << endl << "tamanho: " << tamanhos[i-1] << endl;
+
+            for(x=0; x<n_vertices; x++){
+                if(visitados[x] == i){
+                    arq << x+1 << ' ';
+                }
+            }
+            arq << endl;
+        }
+        arq.close();
+        return true;
+    }
+}

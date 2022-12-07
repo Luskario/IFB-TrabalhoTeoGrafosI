@@ -60,14 +60,48 @@ bool Grafo::lista_adjacente(){
     return true;
 }
 
-bool Grafo::busca_largura(){
+bool Grafo::busca_largura(int vertice){
+    bool verificados[n_arestas];
 
 }
 
-bool Grafo::busca_profundidade(){
+bool Grafo::busca_profundidade(int vertice){
 
 }
 
 bool Grafo::comp_conexo(){
+    int i, contador = 0;
+    int visitados[n_vertices];
+
+    for(i=0; i<n_vertices; i++){
+        visitados[i] = 0;
+    }
+   
+    for(i=0; i<n_vertices; i++){
+        //cout << visitados[i];
+        if(visitados[i] == 0){
+            contador++;
+            verifica_comp(i, contador, visitados);
+        }
+    }
+
+    imprime_conexo(contador, visitados);
+    return true;
     
+}
+
+bool Grafo:: verifica_comp(int i, int contador, int *visitados){
+    int a, posicao;
+    cout << i << ' ' << contador << endl;
+
+    visitados[i] = contador;
+
+    for(a=0; a<list_adj[i].size(); a++){
+        posicao = list_adj[i][a]-1;
+        if(visitados[posicao] == 0){
+            verifica_comp(posicao, contador, visitados);
+        }
+    }
+    
+    return true;
 }

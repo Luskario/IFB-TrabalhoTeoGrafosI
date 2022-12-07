@@ -25,6 +25,8 @@ class Grafo {
         bool gerar_graus();
         bool matriz_adjacente();
         bool lista_adjacente();
+        bool verifica_comp(int i, int contador, int visitados[]);
+        bool imprime_conexo(int numero, int *visitados);
     //
     public:
         Grafo(string nome_arq);
@@ -34,8 +36,8 @@ class Grafo {
         bool imprimeMatriz();
         bool imprimeLista();
 
-        bool busca_largura();
-        bool busca_profundidade();
+        bool busca_largura(int vertice);
+        bool busca_profundidade(int vertice);
         bool comp_conexo();
         void getDados();
     //
