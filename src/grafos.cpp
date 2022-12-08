@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <queue>
 #include "./libs/grafos.h"
 
 using namespace std;
@@ -61,7 +62,24 @@ bool Grafo::lista_adjacente(){
 }
 
 bool Grafo::busca_largura(int vertice){
-    bool verificados[n_arestas];
+    int verificados[n_vertices][2];
+    int i, x, ultimo;
+
+    for(i=0; i<n_vertices; i++){
+        verificados[i][0] = 0;
+        verificados[i][1] = 0;
+    }
+    
+    queue <int> lidos;
+    lidos.push(vertice);
+
+    while(lidos.size() > 0){
+        ultimo = lidos.front();
+        for(x=0; x<list_adj[ultimo].size(); x++){
+            lidos.push(list_adj[ultimo][x]);
+        }
+        lidos.pop();
+    }
 
 }
 

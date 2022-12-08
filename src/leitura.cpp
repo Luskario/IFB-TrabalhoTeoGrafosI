@@ -39,5 +39,6 @@ bool Grafo::carregarGrafo(string nome_arq){
 }
 
 Grafo::Grafo(string nome_arq){
+    nome_grafo = nome_arq;
     bool verifica = carregarGrafo(nome_arq);
 }

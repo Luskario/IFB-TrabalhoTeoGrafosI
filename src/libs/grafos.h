@@ -12,6 +12,7 @@ typedef struct aresta {
 class Grafo {
     private:
         //atributos
+        string nome_grafo;
         int n_vertices;
         int n_arestas;
         vector <int> graus;
@@ -25,7 +26,7 @@ class Grafo {
         bool gerar_graus();
         bool matriz_adjacente();
         bool lista_adjacente();
-        bool verifica_comp(int i, int contador, int visitados[]);
+        bool verifica_comp(int i, int contador, int *visitados);
         bool imprime_conexo(int numero, int *visitados);
     //
     public:
