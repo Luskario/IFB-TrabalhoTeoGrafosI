@@ -9,6 +9,13 @@ typedef struct aresta {
     
 } Aresta;
 
+typedef struct dado {
+    int valor;
+    int nivel;
+    int pai;
+    
+} Dado;
+
 class Grafo {
     private:
         //atributos
@@ -28,6 +35,8 @@ class Grafo {
         bool lista_adjacente();
         bool verifica_comp(int i, int contador, int *visitados);
         bool imprime_conexo(int numero, int *visitados);
+        bool verifica_profundidade(int vertice, int* verificados, vector <Dado> &valores, int nivel);
+        bool imprime_valores_busca(vector <Dado> valores, string nome);
     //
     public:
         Grafo(string nome_arq);

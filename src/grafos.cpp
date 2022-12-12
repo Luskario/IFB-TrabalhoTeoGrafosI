@@ -62,29 +62,76 @@ bool Grafo::lista_adjacente(){
 }
 
 bool Grafo::busca_largura(int vertice){
-    int verificados[n_vertices][2];
+    int verificados[n_vertices], nivel[n_vertices];
     int i, x, ultimo;
+    vector <Dado> valores;
 
     for(i=0; i<n_vertices; i++){
-        verificados[i][0] = 0;
-        verificados[i][1] = 0;
+        verificados[i] = 0;
+        nivel[i] = 0;
     }
     
     queue <int> lidos;
     lidos.push(vertice);
+    valores.push_back({vertice, 0, 0});
 
     while(lidos.size() > 0){
         ultimo = lidos.front();
-        for(x=0; x<list_adj[ultimo].size(); x++){
-            lidos.push(list_adj[ultimo][x]);
+
+        for(x=0; x<list_adj[ultimo-1].size(); x++){
+            i = list_adj[ultimo-1][x];
+
+            if(verificados[i-1] == 0){
+                lidos.push(i);
+                verificados[i-1] = 1;
+                nivel[i-1] = nivel[ultimo-1]+1;
+                valores.push_back({i, nivel[i-1], ultimo});
+            }
         }
+
         lidos.pop();
     }
+    
+    for(i=0; i<valores.size(); i++){
+        cout << valores[i].valor << " " << valores[i].pai << " " << valores[i].nivel << endl;
+    }
+
+    imprime_valores_busca(valores, "teste");
 
 }
 
 bool Grafo::busca_profundidade(int vertice){
+    int i, verificados[n_vertices], nivel = 0;
+    vector <Dado> valores;
 
+    valores.push_back({vertice, 0});
+
+    for(i=0; i<n_vertices; i++){
+        verificados[i] = 0;
+    }
+
+    verifica_profundidade(vertice, verificados, valores, nivel+1);
+
+    for(i=0; i<valores.size(); i++){
+        cout << valores[i].valor << " " << valores[i].pai << " " << valores[i].nivel << endl;
+    }
+
+    imprime_valores_busca(valores, "teste");
+    
+}
+
+bool Grafo::verifica_profundidade(int vertice, int* verificados, vector <Dado> &valores, int nivel){
+    int i, v;
+    verificados[vertice-1] = -1;
+
+    //cout << vertice << " "<< nivel << endl;
+    for(i = 0; i<list_adj[vertice-1].size(); i++){
+        v = list_adj[vertice-1][i];
+        if(verificados[v-1] == 0){
+            valores.push_back({v, nivel, vertice});
+            verifica_profundidade(v, verificados, valores, nivel+1);
+        }
+    }
 }
 
 bool Grafo::comp_conexo(){
@@ -110,7 +157,7 @@ bool Grafo::comp_conexo(){
 
 bool Grafo:: verifica_comp(int i, int contador, int *visitados){
     int a, posicao;
-    cout << i << ' ' << contador << endl;
+    //cout << i << ' ' << contador << endl;
 
     visitados[i] = contador;
 

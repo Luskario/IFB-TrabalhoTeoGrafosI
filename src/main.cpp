@@ -15,7 +15,9 @@ int main(){
     //teste.imprimeMatriz();
     //teste.imprimeLista();
     
-    teste.comp_conexo();
+    //teste.comp_conexo();
+
+    teste.busca_profundidade(39525);
 
     return 0;
 }

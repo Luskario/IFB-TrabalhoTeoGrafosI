@@ -96,3 +96,22 @@ bool Grafo::imprime_conexo(int numero, int *visitados){
         return true;
     }
 }
+
+bool Grafo::imprime_valores_busca(vector <Dado> valores, string nome){
+    ofstream arq("./output/busca.txt");
+    int i, x;
+
+    if(!arq.is_open()){
+        cout << "arquivo não pode ser aberto" << endl;
+        return false;
+
+    } else {
+
+        for(x=0; x<valores.size(); x++){
+            arq << "valor: "<< valores[x].valor << " | pai: " << valores[x].pai << " | nivel: " << valores[x].nivel << endl;
+        }
+
+        arq.close();
+        return true;
+    }
+}
