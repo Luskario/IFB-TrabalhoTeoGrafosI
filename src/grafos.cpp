@@ -96,7 +96,7 @@ bool Grafo::busca_largura(int vertice){
         cout << valores[i].valor << " " << valores[i].pai << " " << valores[i].nivel << endl;
     }
 
-    imprime_valores_busca(valores, "teste");
+    imprime_valores_busca(valores, "largura");
 
 }
 
@@ -116,7 +116,7 @@ bool Grafo::busca_profundidade(int vertice){
         cout << valores[i].valor << " " << valores[i].pai << " " << valores[i].nivel << endl;
     }
 
-    imprime_valores_busca(valores, "teste");
+    imprime_valores_busca(valores, "profundidade");
     
 }
 

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include "./libs/grafos.h"
+#include "./libs/processamento.h"
 
 using namespace std;
 
@@ -34,11 +35,14 @@ bool Grafo::carregarGrafo(string nome_arq){
 
         arq.close();
         return true;
-    } 
+    }
 
 }
 
 Grafo::Grafo(string nome_arq){
     nome_grafo = nome_arq;
+    criar_diretorio(nome_arq);
+    criar_diretorio(nome_arq+"/buscas");
+    
     bool verifica = carregarGrafo(nome_arq);
 }

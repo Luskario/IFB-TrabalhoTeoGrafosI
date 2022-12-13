@@ -6,7 +6,7 @@
 using namespace std;
 
 bool Grafo::imprimeGrafo(){
-    ofstream arq("./output/resultado.txt");
+    ofstream arq("./output/"+ nome_grafo+"/resultado.txt");
     int x = 1;
 
     if(!arq.is_open()){
@@ -25,7 +25,7 @@ bool Grafo::imprimeGrafo(){
 }
 
 bool Grafo::imprimeMatriz(){
-    ofstream arq("./output/matriz.txt");
+    ofstream arq("./output/"+ nome_grafo+"/matriz.txt");
     int i, x;
 
     if(!arq.is_open()){
@@ -45,7 +45,7 @@ bool Grafo::imprimeMatriz(){
 }
 
 bool Grafo::imprimeLista(){
-    ofstream arq("./output/lista.txt");
+    ofstream arq("./output/"+ nome_grafo+"/lista.txt");
     int i, x;
 
     if(!arq.is_open()){
@@ -65,7 +65,7 @@ bool Grafo::imprimeLista(){
 }
 
 bool Grafo::imprime_conexo(int numero, int *visitados){
-    ofstream arq("./output/comp_conexos.txt");
+    ofstream arq("./output/"+ nome_grafo+"/comp_conexos.txt");
     int i, x;
     int tamanhos[numero];
 
@@ -98,7 +98,10 @@ bool Grafo::imprime_conexo(int numero, int *visitados){
 }
 
 bool Grafo::imprime_valores_busca(vector <Dado> valores, string nome){
-    ofstream arq("./output/busca.txt");
+
+    string nomeArq = "./output/"+ nome_grafo+"/buscas/busca_" + nome + "_" + to_string(valores[0].valor) + ".txt";
+
+    ofstream arq(nomeArq);
     int i, x;
 
     if(!arq.is_open()){
