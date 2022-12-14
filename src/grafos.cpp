@@ -6,13 +6,6 @@
 
 using namespace std;
 
-void Grafo::getDados(){
-    cout <<"arestas: " << n_arestas << " vertices: " << n_vertices << endl;
-    for (int i: graus){
-        cout << i << ' ';
-    }
-}
-
 bool Grafo::gerar_graus(){
     int i;
 
@@ -91,12 +84,10 @@ bool Grafo::busca_largura(int vertice){
 
         lidos.pop();
     }
-    
-    for(i=0; i<valores.size(); i++){
-        cout << valores[i].valor << " " << valores[i].pai << " " << valores[i].nivel << endl;
-    }
 
     imprime_valores_busca(valores, "largura");
+
+    return true;
 
 }
 
@@ -118,6 +109,7 @@ bool Grafo::busca_profundidade(int vertice){
 
     imprime_valores_busca(valores, "profundidade");
     
+    return true;
 }
 
 bool Grafo::verifica_profundidade(int vertice, int* verificados, vector <Dado> &valores, int nivel){
@@ -132,6 +124,8 @@ bool Grafo::verifica_profundidade(int vertice, int* verificados, vector <Dado> &
             verifica_profundidade(v, verificados, valores, nivel+1);
         }
     }
+
+    return true;
 }
 
 bool Grafo::comp_conexo(){
@@ -157,7 +151,6 @@ bool Grafo::comp_conexo(){
 
 bool Grafo:: verifica_comp(int i, int contador, int *visitados){
     int a, posicao;
-    //cout << i << ' ' << contador << endl;
 
     visitados[i] = contador;
 
@@ -170,3 +163,4 @@ bool Grafo:: verifica_comp(int i, int contador, int *visitados){
     
     return true;
 }
+

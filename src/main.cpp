@@ -3,20 +3,21 @@
 #include <vector>
 #include <time.h>
 #include "./libs/grafos.h"
-#include "./libs/processamento.h"
+#include "./libs/auxiliar.h"
 
 using namespace std;
 
 int main(){
     cout << "carregando..." << endl;
-    //esperar(2000);
+    criar_diretorio("");
+
     Grafo teste("as_graph.txt");
 
     //Grafo teste("collaboration_graph.txt");
 
     //teste.getDados();
     //teste.imprimeGrafo();
-    teste.imprimeMatriz();
+    //teste.imprimeMatriz();
     //teste.imprimeLista();
     
     
@@ -25,10 +26,14 @@ int main(){
     //for(int a=1; a<16; a++){
         //teste.busca_largura(a);
     //}
-    
-    cout << "\033[2J" << "\033[0;0H";
 
-    return 0;
+    teste.busca_largura(24733);
+
+    //teste.gerar_grafico();
+
+    system("clear || cls");
+
+    //teste.encontrar_diametro();
 
     return 0;
 }

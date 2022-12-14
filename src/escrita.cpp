@@ -2,6 +2,8 @@
 #include <fstream>
 #include <vector>
 #include "./libs/grafos.h"
+#include "pbPlots.hpp"
+#include "supportLib.hpp"
 
 using namespace std;
 
@@ -25,7 +27,7 @@ bool Grafo::imprimeGrafo(){
 }
 
 bool Grafo::imprimeMatriz(){
-    ofstream arq("./output/"+ nome_grafo+"/matriz.txt");
+    ofstream arq("./output/"+ nome_grafo+"/matriz_adjacente.txt");
     int i, x;
 
     if(!arq.is_open()){
@@ -45,7 +47,7 @@ bool Grafo::imprimeMatriz(){
 }
 
 bool Grafo::imprimeLista(){
-    ofstream arq("./output/"+ nome_grafo+"/lista.txt");
+    ofstream arq("./output/"+ nome_grafo+"/lista_adjacente.txt");
     int i, x;
 
     if(!arq.is_open()){
@@ -65,7 +67,7 @@ bool Grafo::imprimeLista(){
 }
 
 bool Grafo::imprime_conexo(int numero, int *visitados){
-    ofstream arq("./output/"+ nome_grafo+"/comp_conexos.txt");
+    ofstream arq("./output/"+ nome_grafo+"/componentes_conexos.txt");
     int i, x;
     int tamanhos[numero];
 
@@ -117,4 +119,25 @@ bool Grafo::imprime_valores_busca(vector <Dado> valores, string nome){
         arq.close();
         return true;
     }
+}
+
+bool Grafo::gerar_grafico(){
+    StringReference *errorMessage = CreateStringReferenceLengthValue(0, L' ');
+    RGBABitmapImageReference *imageReference = CreateRGBABitmapImageReference();
+    vector <double> vertices;
+    vector <double> d_graus;
+
+    for(int a=1; a < n_vertices+1; a++){
+        vertices.push_back(a);
+        d_graus.push_back(graus[a-1]);
+    }
+    
+    
+    DrawScatterPlot(imageReference, 600, 400, &vertices, &d_graus, errorMessage);
+
+    vector<double> *pngdata = ConvertToPNG(imageReference->image);
+    string nomeArq = "./output/" + nome_grafo + "/grafico.png";
+	WriteToFile(pngdata, nomeArq);
+    DeleteImage(imageReference->image);
+    
 }

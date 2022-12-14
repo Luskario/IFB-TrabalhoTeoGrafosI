@@ -37,6 +37,7 @@ class Grafo {
         bool imprime_conexo(int numero, int *visitados);
         bool verifica_profundidade(int vertice, int* verificados, vector <Dado> &valores, int nivel);
         bool imprime_valores_busca(vector <Dado> valores, string nome);
+        int buscar_maior_nivel(int vertice);
     //
     public:
         Grafo(string nome_arq);
@@ -49,7 +50,9 @@ class Grafo {
         bool busca_largura(int vertice);
         bool busca_profundidade(int vertice);
         bool comp_conexo();
-        void getDados();
+        bool gerar_grafico();
+        bool encontrar_diametro();
+        
     //
 };
 

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include "./libs/grafos.h"
-#include "./libs/processamento.h"
+#include "./libs/auxiliar.h"
 
 using namespace std;
 
