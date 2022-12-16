@@ -22,6 +22,7 @@ class Grafo {
         string nome_grafo;
         int n_vertices;
         int n_arestas;
+        int diametro;
         vector <int> graus;
         vector <Aresta> arestas;
         vector<vector<int>> mat_adj;

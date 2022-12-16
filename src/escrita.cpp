@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "./libs/grafos.h"
-#include "pbPlots.hpp"
-#include "supportLib.hpp"
+#include "./libs/grafos.hpp"
+#include "./lib_externa/pbPlots.hpp"
+#include "./lib_externa/supportLib.hpp"
 
 using namespace std;
 
@@ -132,12 +132,13 @@ bool Grafo::gerar_grafico(){
         d_graus.push_back(graus[a-1]);
     }
     
-    
     DrawScatterPlot(imageReference, 600, 400, &vertices, &d_graus, errorMessage);
 
     vector<double> *pngdata = ConvertToPNG(imageReference->image);
     string nomeArq = "./output/" + nome_grafo + "/grafico.png";
 	WriteToFile(pngdata, nomeArq);
     DeleteImage(imageReference->image);
+
+    return true;
     
 }

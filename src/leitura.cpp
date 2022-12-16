@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "./libs/grafos.h"
-#include "./libs/auxiliar.h"
+#include "./libs/grafos.hpp"
+#include "./libs/auxiliar.hpp"
 
 using namespace std;
 
@@ -41,6 +41,7 @@ bool Grafo::carregarGrafo(string nome_arq){
 
 Grafo::Grafo(string nome_arq){
     nome_grafo = nome_arq;
+    criar_diretorio("");
     criar_diretorio(nome_arq);
     criar_diretorio(nome_arq+"/buscas");
     

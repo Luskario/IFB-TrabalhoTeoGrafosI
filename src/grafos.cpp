@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <queue>
-#include "./libs/grafos.h"
+#include "./libs/grafos.hpp"
 
 using namespace std;
 
@@ -103,10 +103,6 @@ bool Grafo::busca_profundidade(int vertice){
 
     verifica_profundidade(vertice, verificados, valores, nivel+1);
 
-    for(i=0; i<valores.size(); i++){
-        cout << valores[i].valor << " " << valores[i].pai << " " << valores[i].nivel << endl;
-    }
-
     imprime_valores_busca(valores, "profundidade");
     
     return true;
@@ -116,7 +112,6 @@ bool Grafo::verifica_profundidade(int vertice, int* verificados, vector <Dado> &
     int i, v;
     verificados[vertice-1] = -1;
 
-    //cout << vertice << " "<< nivel << endl;
     for(i = 0; i<list_adj[vertice-1].size(); i++){
         v = list_adj[vertice-1][i];
         if(verificados[v-1] == 0){
@@ -137,7 +132,6 @@ bool Grafo::comp_conexo(){
     }
    
     for(i=0; i<n_vertices; i++){
-        //cout << visitados[i];
         if(visitados[i] == 0){
             contador++;
             verifica_comp(i, contador, visitados);
